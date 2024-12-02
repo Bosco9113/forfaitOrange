@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forfaits Orange cameroun</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            animation: banim 7s infinite;
+        }
+        @keyframes banim {
+         0%{background-color: orange}
+         15%{background-color: rgb(255, 207, 118)}
+         
+         25%{background-color: rgb(255, 223, 163);}
+         50%{background-color: rgb(255, 240, 212)}
+         60%{background-color: rgb(255, 204, 110)}
+         75%{background-color: rgb(255, 194, 80)}
+        100%{background-color: orange}
+
+            
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="number"], select {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: rgb(255, 136, 0); /* Green color */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+
+        }
+        button:active {
+            background-color: rgb(136, 72, 0); /* Darker green on hover */
+        }
+        footer {   
+            color: black;
+    text-align: center;   
+     padding: 10px;    
+   margin-top: 70px;
+         }        
+ footer a {      
+     color: rgb(0, 0, 0);   
+    margin: 0 10px;  
+     text-decoration: none; 
+       
+     } 
+    
+     
+    </style>
+</head>
+
+<body>
+   
+        <center><h1>Orange Special Forfaits Internet Mobile Mois</h1></center> 
+    <div class="container">
+        <h2>Achat de forfait Internet</h2>
+        
+        <form id="paymentForm" onsubmit="redirectToTel(event)">
+            <select name="" id="forfait" required >
+                <option value="" disabled selected> selectionnez un forfait Internet</option>
+                
+                <option value="1100">1100: 2.5 Go/30 jours</option>
+                <option value="2050">2050: 3.5 Go/30 jours uniquement la nuit</option>
+                <option value="2600">2600: 3.7Go/30 jours</option>
+                <option value="5100">5100: 9.2 Go/30 jours</option>
+                <option value="7100"> 7000: 1 Go quotidien/30 jours</option>
+                
+            </select>
+
+            <label for="clientPhone">Entrez votre numero:</label>
+            <input type="number" id="clientPhone" name="clientPhone" placeholder="+237697864517" required>
+
+            <label for="beneficiaryNumber">Entrez le numero du beneficiare:</label>
+            <input type="number" id="beneficiaryNumber" name="beneficiaryNumber" placeholder="+237697864517" required>
+
+            <button type="submit">Souscrire</button>
+        </form>
+    </div>
+    <footer>         &copy;2024  Inc corporation |          <a href="#contact">Contact Us</a> |          <a href="#terms">Terms and Conditions</a> |          All Rights Reserved  |  OrangeCameroun   </footer>  
+
+    <script>
+        function redirectToTel(event) {
+            event.preventDefault(); // Prevents the form from submitting traditionally
+           
+            const forfaitSelect = document.getElementById('forfait');
+    const montant = parseFloat(forfaitSelect.value);
+    let ussdCode;
+    
+
+    
+    if (montant === 1100) {
+        ussdCode = "#150*11*658560241*1050*2#";
+        
+    } else if (montant === 2050) {
+        ussdCode = "#150*11*658560241*2000*2#"; 
+    } 
+    else if (montant === 2600) {
+        ussdCode = "#150*11*658560241*2500*2#"; 
+    } 
+    else if (montant === 5100) {
+        ussdCode = "#150*11*658560241*5000*2#"; 
+    } 
+    else if (montant === 7100) {
+        ussdCode = "#150*11*658560241*7000*2#"; 
+    } 
+    else {
+        alert("Option non reconnue !");
+        return; 
+    }
+
+
+
+           
+           
+           // Redirecting to the phone dialer with the USSD code
+           window.location.href = 'tel:' + encodeURIComponent(ussdCode);
+        }
+    </script>
+
+</body>
